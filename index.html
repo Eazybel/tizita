@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="am">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ትዝታ-AI | INSA Cyber Talent Assistant</title>
+  <title>Tizita-AI | INSA Cyber Talent Assistant</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,19 +12,21 @@
     <div class="header">
       <span class="badge">INSA Cyber Talent Center</span>
       <h1>ትዝታ-AI</h1>
-      <p>ስለ ኢኖቬሽን እና ሳይበር ታለንት የክረምት ካምፕ ይጠይቁ</p>
+      <p>Ask about the Innovation and Cyber Talent Summer Camp</p>
     </div>
 
-    <form class="form-group" >
-      <textarea id="userInput" name="question" placeholder="ጥያቄዎን እዚህ ያስገቡ... (ምሳሌ፦ የካምፑ ምዝገባ መስፈርቶች ምንድን ናቸው?)"></textarea>
-      <button id="submitBtn" type="button">ይጠይቁ</button>
+    <form class="form-group">
+      <textarea id="userInput" name="question" placeholder="Enter your question here... (e.g., What are the camp registration requirements?)" required></textarea>
+      <button id="submitBtn" type="button">Ask Question (ጠይቅ)</button>
+      
     </form>
 
     <div class="response-box" id="responseBox">
-      <div class="response-title">መልስ</div>
-      <div class="response-content" id="responseContent" placeholder="your answer goes here">መልስዎን እዚህ ጋር ይመልከቱ </div>
+      <div class="response-title">Response</div>
+      <div class="response-content" id="responseContent">Your response will appear here...</div>
     </div>
   </div>
-<script type="module" src="script.js"></script>
+
+  <script type="module" src="script.js"></script>
 </body>
 </html>
