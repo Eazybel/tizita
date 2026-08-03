@@ -15,14 +15,14 @@
       <p>ስለ ኢኖቬሽን እና ሳይበር ታለንት የክረምት ካምፕ ይጠይቁ</p>
     </div>
 
-    <form class="form-group" action="/api/ask" method="POST">
+    <form class="form-group" >
       <textarea id="userInput" name="question" placeholder="ጥያቄዎን እዚህ ያስገቡ... (ምሳሌ፦ የካምፑ ምዝገባ መስፈርቶች ምንድን ናቸው?)"></textarea>
-      <button type="submit">Ask</button>
+      <button id="submitBtn" type="button">ይጠይቁ</button>
     </form>
 
     <div class="response-box" id="responseBox">
       <div class="response-title">መልስ</div>
-      <div class="response-content" id="responseContent"></div>
+      <div class="response-content" id="responseContent" placeholder="your answer goes here">መልስዎን እዚህ ጋር ይመልከቱ </div>
     </div>
   </div>
 <script type="module" src="script.js"></script>
