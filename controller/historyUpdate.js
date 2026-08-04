@@ -1,7 +1,9 @@
 const mongoose=require("mongoose")
 const historyModel=require("../schema/chatHistorySchema")
 const historyUpdate=async(req,res)=>{
-    const newHistoryData= new historyModel({"user.prompt":req.body.prompt,"user.response":req.body.response,"user.email":req.body.email})
+    const newHistoryData= await historyModel.findOne({"email":req.email})
+    newHistoryData.email=req.body.email
+    newHistoryData.chats.push({"prompt":req.body.prompt,"response":req.body.response})
     newHistoryData.save().then(()=>{
             console.log("saved")
         res.send(req.body)
