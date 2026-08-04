@@ -17,6 +17,9 @@ submitBtn.innerText="Loading ..."
         }).then(data=>{
 submitBtn.innerText="Ask Question (ጠይቅ)"
 responseContent.innerText=data
+        }).catch(err=>{
+            alert("Something went wrong please try again")
+            submitBtn.innerText="Ask Question (ጠይቅ)"
         })
     }
 }
