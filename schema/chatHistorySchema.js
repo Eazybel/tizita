@@ -1,8 +1,10 @@
 const mongoose=require("mongoose")
 const historySchema=new mongoose.Schema({
-    "prompt":String,
-    "response":String
+    "user":{
+        "prompt":{type:String},"response":{type:String},"email":{type:String}
+    }
 
 }) 
 
-const historyModel= new mongoose.model(historySchema,historyModel,"history")
+const historyModel= new mongoose.model("historyModel",historySchema,"historys")
+module.exports=historyModel

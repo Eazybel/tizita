@@ -25,10 +25,10 @@ fetch("/historyUpdate",
 {
 method:"POST",
 headers:{"Content-type":"application/json"},
-body:JSON.stringify({"chat":"sucess"})
+body:JSON.stringify({"prompt":`${userInput.value}`,"response":"automation responce goes here","email":`${user.email}`})
 }
 ).then(res=>{
-    return res.text()
+    return res.json()
 }).then(data=>{
     console.log(data)
 })
