@@ -1,8 +1,5 @@
 const express=require("express")
-const mongoose=require("mongoose")
 const path=require("path")
-const historyUpdate=require("./controller/historyUpdate")
-const userController=require("./controller/userController")
 require("dotenv").config()
 const app=express()
 app.use(express.json())

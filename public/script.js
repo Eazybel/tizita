@@ -21,43 +21,6 @@ onAuthStateChanged(auth, (user) => {
     const uid = user.uid;
  welcomeMessage.innerText=`Welcome ${user.displayName}`
 submitBtn.onclick=()=>{
-    
-    responseContent.innerText=""
-    if(userInput.value.length<1){
-        alert("No questions asked")
-    }else{
-submitBtn.innerText="Loading ..."
-submitBtn.style.backgroundColor="#133458"
-        fetch("https://insachatbot.onrender.com/webhook/4b84d270-681b-421d-a729-3331ef424e7e",
-            {
-                method:"POST",
-                headers:{"Content-type":"application/json"},
-                body:JSON.stringify({"QUESTION":`${userInput.value}`})
-            }
-        ).then(res=>{
-            return res.text()
-        }).then(data=>{
-submitBtn.innerText="Ask Question (ጠይቅ)"
-submitBtn.style.backgroundColor="#8c4a27"
-responseContent.innerText=data
-localStorage.setItem(`prompt-${localStorage.length+1}`,userInput.value)
-        }).catch(err=>{
-            alert("Something went wrong please try again")
-            submitBtn.innerText="Ask Question (ጠይቅ)"
-submitBtn.style.backgroundColor="#8c4a27"
-        })
-    }
-fetch("/historyUpdate",
-{
-method:"POST",
-headers:{"Content-type":"application/json"},
-body:JSON.stringify({"prompt":`${userInput.value}`,"response":"automation responce goes here","email":`${user.email}`})
-}
-).then(res=>{
-    return res.json()
-}).then(data=>{
-    console.log(data)
-})
     responseContent.innerText=""
     if(userInput.value.length<1){
         alert("No questions asked")
