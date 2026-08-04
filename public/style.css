@@ -132,3 +132,47 @@ button:hover {
   font-size: 0.95rem;
   white-space: pre-wrap;
 }
+/* Top Bar Container */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px dashed #c2b280; /* Antique warm border */
+}
+
+/* Antique Welcome Message */
+.welcome-msg {
+  font-family: 'Georgia', 'Garamond', serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #5c4033; /* Dark sepia/brown */
+  letter-spacing: 0.5px;
+  font-style: italic;
+}
+
+/* Antique History Button */
+.history-btn {
+  background-color: #f4ebd9; /* Soft parchment tint */
+  color: #5c4033; /* Deep brown text */
+  border: 1px solid #8b5a2b; /* Bronze/aged wood border */
+  padding: 6px 14px;
+  font-size: 0.85rem;
+  font-family: inherit;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.history-btn:hover {
+  background-color: #8b5a2b;
+  color: #f4ebd9;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.history-btn:active {
+  transform: translateY(1px);
+}

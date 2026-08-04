@@ -1,4 +1,5 @@
 const express=require("express")
+const mongoose=require("mongoose")
 const path=require("path")
 require("dotenv").config()
 const app=express()
@@ -14,4 +15,7 @@ app.get("/", (req, res) => {
 const port = process.env.PORT || 5000
 app.listen(port, () => {
     console.log(`SERVER RUNNING ON ${port}`)
+})
+mongoose.connect("mongodb+srv://eazybel27_db_user:FhqEdkSGRO73FwCW@cluster0.zih5j6f.mongodb.net/?appName=Cluster0",()=>{
+    console.log("Database connected")
 })
