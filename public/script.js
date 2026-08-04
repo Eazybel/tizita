@@ -21,7 +21,17 @@ onAuthStateChanged(auth, (user) => {
     const uid = user.uid;
  welcomeMessage.innerText=`Welcome ${user.displayName}`
 submitBtn.onclick=()=>{
-    
+fetch("/historyUpdate",
+{
+method:"POST",
+headers:{"Content-type":"application/json"},
+body:JSON.stringify({"chat":"sucess"})
+}
+).then(res=>{
+    return res.text()
+}).then(data=>{
+    console.log(data)
+})
 //     responseContent.innerText=""
 //     if(userInput.value.length<1){
 //         alert("No questions asked")
