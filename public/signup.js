@@ -1,6 +1,6 @@
 const signInBtn=document.getElementById("signInBtn")
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.17.0/firebase-app.js";
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/12.17.0/firebase-auth.js";
+import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.17.0/firebase-auth.js";
   const firebaseConfig = {
     apiKey: "AIzaSyCj_pnEt37FgjIEjCK6nLQHIu10EJj4Txs",
     authDomain: "tizitainsa.firebaseapp.com",
@@ -18,14 +18,7 @@ signInBtn.onclick=()=>{
     const credential = GoogleAuthProvider.credentialFromResult(result);
     const token = credential.accessToken;
     const user = result.user;
-    console.log(user)
-    fetch("/userController",{method:"POST",headers:{"Content-type":"application/json"},body:JSON.stringify({"email":`${user.email}`})})
-    .then(res=>{
-      return res.json()
-    }).then(data=>{
-      console.log(data)
-      // window.location.href="./index.html"
-    })
+    window.location.href="./index.html"
   }).catch((error) => {
     // Handle Errors here.
     const errorCode = error.code;
@@ -35,3 +28,4 @@ signInBtn.onclick=()=>{
     // ...
   });
 }
+
