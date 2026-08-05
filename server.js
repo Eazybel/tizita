@@ -10,8 +10,8 @@ app.use(express.urlencoded({extended:true}))
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname,"./public/index.html"))
 })
-const port = process.env.PORT || 5000
+const port = process.env.PORT
 app.listen(port, () => {
-    console.log(`SERVER RUNNING ON ${port}`)
+    console.log(`SERVER RUNNING`)
 })
 
