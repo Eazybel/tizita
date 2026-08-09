@@ -14,7 +14,7 @@ const responseContent=document.getElementById("responseContent")
 const welcomeMessage=document.getElementById("welcomeMessage")
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-// authentication / fetching automationdsta/ setting local storage code block {#0e7,44}
+// authentication / fetching automationdsta/ setting local storage code block {#0e7,46}
 onAuthStateChanged(auth, (user) => {
   if (!user) {
       window.location.href="./signup.html"
