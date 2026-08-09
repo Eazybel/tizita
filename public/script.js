@@ -91,7 +91,8 @@ socket.on('user_count', (count) => {
   liveChatBtn.textContent = `Chat with Active Users (${count})`;
 });
 
-// Receive message with Sender Name from other users
+
+// Receive message with Sender Name from other users  {#d11,3}
 socket.on('receive_message', (data) => {
   appendMessage(data.text, 'incoming', data.senderName, data.time);
 });
