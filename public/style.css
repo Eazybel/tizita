@@ -280,7 +280,7 @@ button:hover {
   white-space: pre-wrap;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', monospace;
 }
-/* Active Chat Modal Adjustments */
+/* Active Chat Modal Styling */
 .chat-modal-content {
   max-width: 450px;
   display: flex;
@@ -288,28 +288,37 @@ button:hover {
 }
 
 .chat-display {
-  height: 220px;
+  height: 260px;
   border: 1px solid #e5e7eb;
   border-radius: 8px;
-  padding: 10px;
+  padding: 12px;
   margin: 12px 0;
   overflow-y: auto;
   background: #f9fafb;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
 }
 
+/* Individual Message Bubble */
 .chat-msg {
-  padding: 6px 12px;
-  border-radius: 6px;
-  font-size: 14px;
-  background: #e0e7ff;
-  color: #1e1b4b;
-  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  padding: 8px 12px;
+  border-radius: 8px;
   max-width: 80%;
+  font-size: 14px;
 }
 
+/* Incoming Message (Other Users) */
+.chat-msg.incoming {
+  background: #ffffff;
+  color: #1f2937;
+  align-self: flex-start;
+  border: 1px solid #e5e7eb;
+}
+
+/* Sent Message (Current User) */
 .chat-msg.user {
   background: #2563eb;
   color: #ffffff;
@@ -321,6 +330,38 @@ button:hover {
   color: #6b7280;
   font-size: 12px;
   align-self: center;
+  padding: 0;
+}
+
+/* Sender Name Header Wrapper */
+.chat-sender {
+  font-size: 11px;
+  font-weight: 700;
+  margin-bottom: 2px;
+  opacity: 0.8;
+}
+
+.chat-msg.user .chat-sender {
+  color: #dbeafe; /* Lighter blue tint for own name */
+  text-align: right;
+}
+
+.chat-msg.incoming .chat-sender {
+  color: #2563eb; /* Darker blue highlight for other senders */
+}
+
+/* Message Body & Timestamp Layout */
+.chat-body {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.chat-time {
+  font-size: 10px;
+  opacity: 0.75;
+  white-space: nowrap;
 }
 
 .chat-input-group {

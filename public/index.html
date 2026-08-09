@@ -89,20 +89,22 @@
   </div>
 
   <!-- Active Users Chat Modal -->
-  <div id="chatModal" class="modal" aria-hidden="true" role="dialog" aria-label="Active Users Chat">
-    <div class="modal-content chat-modal-content">
-      <button class="close-btn" id="closeChatBtn" aria-label="Close chat">×</button>
-      <h2>Active Users Chat 🟢</h2>
-      <div id="chatDisplay" class="chat-display">
-        <div class="chat-msg system">Connected to public room.</div>
-      </div>
-      <div class="chat-input-group">
-        <input type="text" id="chatInput" placeholder="Type a message..." />
-        <button id="sendChatBtn">Send</button>
-      </div>
+<div id="chatModal" class="modal" aria-hidden="true" role="dialog" aria-label="Active Users Chat">
+  <div class="modal-content chat-modal-content">
+    <button class="close-btn" id="closeChatBtn" aria-label="Close chat">×</button>
+    <h2>Active Users Chat 🟢</h2>
+    
+    <div id="chatDisplay" class="chat-display">
+      <div class="chat-msg system">Connected to public room.</div>
+    </div>
+    
+    <div class="chat-input-group">
+      <input type="text" id="chatInput" placeholder="Type a message..." />
+      <button id="sendChatBtn">Send</button>
     </div>
   </div>
-
+</div>
+<script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
   <script type="module" src="script.js"></script>
 </body>
 </html>

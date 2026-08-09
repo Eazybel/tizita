@@ -53,6 +53,102 @@ console.log(uid)
     }
 
 }
+// WEB SOCKET APIL DEMONISTRATION
+
+const SOCKET_SERVER_URL = "http://127.0.0.1:5000";
+const socket = io(SOCKET_SERVER_URL);
+
+// DOM Elements
+const liveChatBtn = document.getElementById('liveChatBtn');
+const chatModal = document.getElementById('chatModal');
+const closeChatBtn = document.getElementById('closeChatBtn');
+const sendChatBtn = document.getElementById('sendChatBtn');
+const chatInput = document.getElementById('chatInput');
+const chatDisplay = document.getElementById('chatDisplay');
+
+// Get active user name from Auth context
+// Example fallback if user has no displayName set
+const currentUserName = (typeof user !== 'undefined' && user?.displayName) 
+  ? user.displayName 
+  : "Anonymous";
+
+// Open/Close Modal
+liveChatBtn.addEventListener('click', () => {
+  chatModal.style.display = 'flex';
+  chatModal.setAttribute('aria-hidden', 'false');
+});
+
+closeChatBtn.addEventListener('click', () => {
+  chatModal.style.display = 'none';
+  chatModal.setAttribute('aria-hidden', 'true');
+});
+
+// Update active user count badge
+socket.on('user_count', (count) => {
+  liveChatBtn.textContent = `Chat with Active Users (${count})`;
+});
+
+// Receive message with Sender Name from other users
+socket.on('receive_message', (data) => {
+  appendMessage(data.text, 'incoming', data.senderName, data.time);
+});
+
+// Send Message Function
+function sendMessage() {
+  const text = chatInput.value.trim();
+  if (!text) return;
+
+  const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+  // 1. Display locally as sent message
+  appendMessage(text, 'user', 'You', time);
+
+  // 2. Emit message along with user's displayName
+  socket.emit('send_message', { 
+    text: text,
+    senderName: currentUserName
+  });
+
+  chatInput.value = '';
+}
+
+// Helper Function to Render Message Box with Sender Name
+function appendMessage(text, type, senderName, time = '') {
+  const msgDiv = document.createElement('div');
+  msgDiv.className = `chat-msg ${type}`;
+  
+  // Sender Name Header
+  const nameDiv = document.createElement('div');
+  nameDiv.className = 'chat-sender';
+  nameDiv.textContent = senderName;
+  msgDiv.appendChild(nameDiv);
+
+  // Message Content & Time
+  const bodyDiv = document.createElement('div');
+  bodyDiv.className = 'chat-body';
+  
+  const textSpan = document.createElement('span');
+  textSpan.textContent = text;
+  bodyDiv.appendChild(textSpan);
+
+  if (time) {
+    const timeSpan = document.createElement('small');
+    timeSpan.className = 'chat-time';
+    timeSpan.textContent = time;
+    bodyDiv.appendChild(timeSpan);
+  }
+
+  msgDiv.appendChild(bodyDiv);
+
+  chatDisplay.appendChild(msgDiv);
+  chatDisplay.scrollTop = chatDisplay.scrollHeight;
+}
+
+// Event Listeners
+sendChatBtn.addEventListener('click', sendMessage);
+chatInput.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') sendMessage();
+});
   }
 });
 
@@ -86,44 +182,4 @@ document.addEventListener('DOMContentLoaded', () => {
         if (docButton) docButton.addEventListener('click', openDoc)
         if (docClose) docClose.addEventListener('click', closeDoc)
         if (docModal) docModal.addEventListener('click', (e) => { if (e.target === docModal) closeDoc() })
-});
-// WEB SOCKET APIL DEMONISTRATION
-
-// Chat Modal Controls
-const liveChatBtn = document.getElementById('liveChatBtn');
-const chatModal = document.getElementById('chatModal');
-const closeChatBtn = document.getElementById('closeChatBtn');
-const sendChatBtn = document.getElementById('sendChatBtn');
-const chatInput = document.getElementById('chatInput');
-const chatDisplay = document.getElementById('chatDisplay');
-
-// Open Chat Popup
-liveChatBtn.addEventListener('click', () => {
-  chatModal.style.display = 'flex';
-  chatModal.setAttribute('aria-hidden', 'false');
-});
-
-// Close Chat Popup
-closeChatBtn.addEventListener('click', () => {
-  chatModal.style.display = 'none';
-  chatModal.setAttribute('aria-hidden', 'true');
-});
-
-// Send Chat Message
-function sendMessage() {
-  const text = chatInput.value.trim();
-  if (!text) return;
-
-  const msgDiv = document.createElement('div');
-  msgDiv.className = 'chat-msg user';
-  msgDiv.textContent = text;
-  
-  chatDisplay.appendChild(msgDiv);
-  chatInput.value = '';
-  chatDisplay.scrollTop = chatDisplay.scrollHeight;
-}
-
-sendChatBtn.addEventListener('click', sendMessage);
-chatInput.addEventListener('keypress', (e) => {
-  if (e.key === 'Enter') sendMessage();
 });
