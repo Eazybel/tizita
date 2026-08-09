@@ -63,3 +63,14 @@ body {
   width: 18px;
   height: 18px;
 }
+.auth-note {
+  margin-top: 16px;
+  font-size: 13px;
+  color: #6b7280; /* Subtle gray */
+  text-align: center;
+  line-height: 1.4;
+}
+
+.auth-note strong {
+  color: #374151;
+}
