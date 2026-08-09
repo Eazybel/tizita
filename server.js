@@ -8,7 +8,7 @@ app.use(express.text())
 app.use(express.urlencoded({extended:true}))
 const limiter=rateLimiter({
     windowMs:15*60*1000,
-    max:5,
+    max:3,
     message:"Too many requests"
 })
 app.use(limiter)
