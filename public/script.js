@@ -39,6 +39,11 @@ submitBtn.style.backgroundColor="#133458"
 submitBtn.innerText="Ask Question (ጠይቅ)"
 submitBtn.style.backgroundColor="#8c4a27"
 responseContent.innerText=data
+        // simple localStorage save of the prompt/response pair
+        const historyKey = 'tizita_history'
+        const existing = JSON.parse(localStorage.getItem(historyKey) || '[]')
+        existing.unshift({ question: userInput.value, answer: data, timestamp: Date.now() })
+        localStorage.setItem(historyKey, JSON.stringify(existing))
         }).catch(err=>{
             alert("Something went wrong please try again")
             submitBtn.innerText="Ask Question (ጠይቅ)"
@@ -49,4 +54,38 @@ console.log(uid)
 
 }
   }
+});
+
+// FAQ toggle behavior: expand/collapse answers
+document.addEventListener('DOMContentLoaded', () => {
+    const qBtns = document.querySelectorAll('.faq-question');
+    qBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const ans = btn.nextElementSibling;
+            const isOpen = ans.classList.toggle('open');
+                        // keep ARIA state in sync for screen readers
+                        btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+    });
+
+        // Documentation modal behavior
+        const docButton = document.getElementById('docBtn')
+        const docModal = document.getElementById('docModal')
+        const docClose = docModal && docModal.querySelector('.close-btn')
+        function openDoc() {
+            if (!docModal) return
+            docModal.style.display = 'block'
+            document.addEventListener('keydown', handleEsc)
+        }
+        function closeDoc() {
+            if (!docModal) return
+            docModal.style.display = 'none'
+            document.removeEventListener('keydown', handleEsc)
+        }
+        function handleEsc(e) {
+            if (e.key === 'Escape') closeDoc()
+        }
+        if (docButton) docButton.addEventListener('click', openDoc)
+        if (docClose) docClose.addEventListener('click', closeDoc)
+        if (docModal) docModal.addEventListener('click', (e) => { if (e.target === docModal) closeDoc() })
 });

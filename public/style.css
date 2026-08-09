@@ -176,3 +176,107 @@ button:hover {
 .history-btn:active {
   transform: translateY(1px);
 }
+
+/* FAQ styles (match existing site cards) */
+.faq {
+  margin-top: 20px;
+}
+.faq .response-title {
+  margin-bottom: 12px;
+}
+.faq-item {
+  margin-bottom: 10px;
+}
+.faq-question {
+  width: 100%;
+  text-align: left;
+  background-color: #faf6f0;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  font-weight: 600;
+  color: var(--text);
+  cursor: pointer;
+}
+.faq-question:focus {
+  outline: 2px solid rgba(140,74,39,0.15);
+}
+.faq-answer {
+  display: none;
+  padding: 12px;
+  background-color: #ffffff;
+  border: 1px solid var(--border);
+  border-top: none;
+  border-radius: 0 0 2px 2px;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+.faq-answer.open {
+  display: block;
+}
+
+/* History page list styling */
+.history-list {
+  margin-top: 12px;
+}
+.history-item {
+  border: 1px solid var(--border);
+  background: #faf6f0;
+  padding: 12px;
+  border-radius: 2px;
+  margin-bottom: 10px;
+}
+.history-item .ts {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+.history-item .q {
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.history-item .a {
+  white-space: pre-wrap;
+  line-height: 1.5;
+}
+
+/* Modal / documentation popup */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+  padding: 40px 20px;
+}
+.modal-content {
+  background: var(--card-bg);
+  margin: 40px auto;
+  padding: 20px 18px;
+  border: 1px solid var(--border);
+  max-width: 700px;
+  border-radius: 4px;
+  box-shadow: 0 6px 24px rgba(43,38,35,0.12);
+}
+.modal-content h2 {
+  margin-top: 0;
+}
+.close-btn {
+  float: right;
+  background: transparent;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+.code {
+  background: #faf6f0;
+  border: 1px solid var(--border);
+  padding: 10px;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', monospace;
+}

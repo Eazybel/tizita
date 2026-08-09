@@ -10,8 +10,10 @@
 
   <div class="container">
     <div class="top-bar">
-  <div id="welcomeMessage" class="welcome-msg"></div>
-</div>
+      <div id="welcomeMessage" class="welcome-msg"></div>
+      <a href="history.html" class="history-btn" id="historyLink">History</a>
+      <button id="docBtn" class="history-btn">Docs</button>
+    </div>
     <div class="header">
       <span class="badge">INSA Cyber Talent Center</span>
       <h1>ትዝታ-AI</h1>
@@ -28,8 +30,63 @@
       <div class="response-title">Response</div>
       <div class="response-content" id="responseContent">Your response will appear here ...</div>
     </div>
+
+    <section class="faq" aria-label="Frequently Asked Questions">
+      <div class="response-title">FAQ</div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">What is the INSA Talent Center?</button>
+        <div class="faq-answer">The INSA Talent Center is a program that identifies, trains and supports cyber security talent through workshops, bootcamps and mentorships.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">Who can apply to the Talent Center?</button>
+        <div class="faq-answer">Students and early-career professionals with an interest in cybersecurity are encouraged to apply. Specific campaigns may target particular age groups or skill levels.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">How do I register?</button>
+        <div class="faq-answer">Registration details are published with each cohort. Check the official INSA announcements or use the signup page on this site for current registration links.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">Are there eligibility requirements?</button>
+        <div class="faq-answer">Requirements vary by program. Common expectations include basic computer literacy and a strong interest in learning cybersecurity topics.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">Is there a fee to participate?</button>
+        <div class="faq-answer">Fees depend on the specific initiative. Some training is free or sponsored, while other programs may charge a fee—refer to official announcements for each event.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">How can I contact the Talent Center?</button>
+        <div class="faq-answer">Use the official INSA contact channels or check the registration page for contact information and support.</div>
+      </div>
+    </section>
   </div>
 
   <script type="module" src="script.js"></script>
+  <!-- Documentation modal -->
+  <div id="docModal" class="modal" aria-hidden="true" role="dialog" aria-label="API documentation">
+    <div class="modal-content">
+      <button class="close-btn" aria-label="Close documentation">×</button>
+      <h2>Bot API — Quick Usage</h2>
+      <p>You can POST JSON with a <strong>QUESTION</strong> field to the bot webhook URL. The response is returned as plain text.</p>
+      <p><strong>Endpoint:</strong></p>
+      <pre class="code">https://insachatbot.onrender.com/webhook/4b84d270-681b-421d-a729-3331ef424e7e</pre>
+      <p><strong>Example curl</strong></p>
+      <pre class="code">curl -X POST 'https://insachatbot.onrender.com/webhook/4b84d270-681b-421d-a729-3331ef424e7e' \
+  -H 'Content-Type: application/json' \
+  -d '{"QUESTION":"What are the registration requirements?"}'</pre>
+      <p><strong>Example JavaScript</strong></p>
+      <pre class="code">fetch('https://insachatbot.onrender.com/webhook/4b84d270-681b-421d-a729-3331ef424e7e', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ QUESTION: 'Your question here' })
+}).then(r =&gt; r.text()).then(console.log)</pre>
+      <p>Use this endpoint responsibly; consider rate limits and keep the URL private for official users.</p>
+    </div>
+  </div>
 </body>
 </html>
