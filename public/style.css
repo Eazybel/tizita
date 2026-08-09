@@ -28,7 +28,7 @@ body {
 
 .container {
   width: 100%;
-  max-width: 600px;
+  max-width: 720px;
   background: var(--card-bg);
   border-radius: 4px; /* Sharper corners for a traditional look */
   padding: 36px 32px;
@@ -135,8 +135,10 @@ button:hover {
 /* Top Bar Container */
 .top-bar {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+  gap: 10px;
   margin-bottom: 20px;
   padding-bottom: 12px;
   border-bottom: 1px dashed #c2b280; /* Antique warm border */
@@ -150,6 +152,25 @@ button:hover {
   color: #5c4033; /* Dark sepia/brown */
   letter-spacing: 0.5px;
   font-style: italic;
+  flex: 1 1 100%;
+}
+
+.top-bar .button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-end;
+  flex: 1 1 auto;
+}
+
+@media (max-width: 640px) {
+  .top-bar {
+    align-items: stretch;
+  }
+  .top-bar .button-group {
+    justify-content: center;
+    width: 100%;
+  }
 }
 
 /* Antique History Button */
@@ -267,10 +288,18 @@ button:hover {
 }
 .close-btn {
   float: right;
-  background: transparent;
-  border: none;
+  background-color: #f4ebd9;
+  color: var(--text);
+  border: 1px solid #8b5a2b;
+  border-radius: 4px;
+  padding: 4px 10px;
   font-size: 1.4rem;
   cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+.close-btn:hover {
+  background-color: #8b5a2b;
+  color: #f4ebd9;
 }
 .code {
   background: #faf6f0;
@@ -282,7 +311,8 @@ button:hover {
 }
 /* Active Chat Modal Styling */
 .chat-modal-content {
-  max-width: 450px;
+  max-width: 580px;
+  width: min(100%, 580px);
   display: flex;
   flex-direction: column;
 }

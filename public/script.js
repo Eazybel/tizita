@@ -66,8 +66,8 @@ const sendChatBtn = document.getElementById('sendChatBtn');
 const chatInput = document.getElementById('chatInput');
 const chatDisplay = document.getElementById('chatDisplay');
 
-// Get active user name from Auth context
-// Example fallback if user has no displayName set
+// Geting active user name from Auth context
+
 const currentUserName = (typeof user !== 'undefined' && user?.displayName) 
   ? user.displayName 
   : "Anonymous";
