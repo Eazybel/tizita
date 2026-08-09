@@ -87,3 +87,43 @@ document.addEventListener('DOMContentLoaded', () => {
         if (docClose) docClose.addEventListener('click', closeDoc)
         if (docModal) docModal.addEventListener('click', (e) => { if (e.target === docModal) closeDoc() })
 });
+// WEB SOCKET APIL DEMONISTRATION
+
+// Chat Modal Controls
+const liveChatBtn = document.getElementById('liveChatBtn');
+const chatModal = document.getElementById('chatModal');
+const closeChatBtn = document.getElementById('closeChatBtn');
+const sendChatBtn = document.getElementById('sendChatBtn');
+const chatInput = document.getElementById('chatInput');
+const chatDisplay = document.getElementById('chatDisplay');
+
+// Open Chat Popup
+liveChatBtn.addEventListener('click', () => {
+  chatModal.style.display = 'flex';
+  chatModal.setAttribute('aria-hidden', 'false');
+});
+
+// Close Chat Popup
+closeChatBtn.addEventListener('click', () => {
+  chatModal.style.display = 'none';
+  chatModal.setAttribute('aria-hidden', 'true');
+});
+
+// Send Chat Message
+function sendMessage() {
+  const text = chatInput.value.trim();
+  if (!text) return;
+
+  const msgDiv = document.createElement('div');
+  msgDiv.className = 'chat-msg user';
+  msgDiv.textContent = text;
+  
+  chatDisplay.appendChild(msgDiv);
+  chatInput.value = '';
+  chatDisplay.scrollTop = chatDisplay.scrollHeight;
+}
+
+sendChatBtn.addEventListener('click', sendMessage);
+chatInput.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') sendMessage();
+});
