@@ -14,6 +14,7 @@ const responseContent=document.getElementById("responseContent")
 const welcomeMessage=document.getElementById("welcomeMessage")
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+// authentication / fetching automationdsta/ setting local storage code block {#0e7,39}
 onAuthStateChanged(auth, (user) => {
   if (!user) {
       window.location.href="./signup.html"
@@ -66,8 +67,9 @@ const sendChatBtn = document.getElementById('sendChatBtn');
 const chatInput = document.getElementById('chatInput');
 const chatDisplay = document.getElementById('chatDisplay');
 
-// Geting active user name from Auth context
 
+
+// Geting active user name from Auth context {#6ef,14}
 const currentUserName = (typeof user !== 'undefined' && user?.displayName) 
   ? user.displayName 
   : "Anonymous";
@@ -83,7 +85,8 @@ closeChatBtn.addEventListener('click', () => {
   chatModal.setAttribute('aria-hidden', 'true');
 });
 
-// Update active user count badge
+
+//  Update active user count badge {#3fb,3}
 socket.on('user_count', (count) => {
   liveChatBtn.textContent = `Chat with Active Users (${count})`;
 });
@@ -93,7 +96,8 @@ socket.on('receive_message', (data) => {
   appendMessage(data.text, 'incoming', data.senderName, data.time);
 });
 
-// Send Message Function
+
+// Send Message Function {#dd1,17}
 function sendMessage() {
   const text = chatInput.value.trim();
   if (!text) return;
@@ -112,7 +116,8 @@ function sendMessage() {
   chatInput.value = '';
 }
 
-// Helper Function to Render Message Box with Sender Name
+
+// Helper Function to Render Message Box with Sender Name {#650,31}
 function appendMessage(text, type, senderName, time = '') {
   const msgDiv = document.createElement('div');
   msgDiv.className = `chat-msg ${type}`;
@@ -123,7 +128,8 @@ function appendMessage(text, type, senderName, time = '') {
   nameDiv.textContent = senderName;
   msgDiv.appendChild(nameDiv);
 
-  // Message Content & Time
+
+  
   const bodyDiv = document.createElement('div');
   bodyDiv.className = 'chat-body';
   
@@ -144,7 +150,8 @@ function appendMessage(text, type, senderName, time = '') {
   chatDisplay.scrollTop = chatDisplay.scrollHeight;
 }
 
-// Event Listeners
+// 
+// Event Listeners and send message function envoker {#322,6}
 sendChatBtn.addEventListener('click', sendMessage);
 chatInput.addEventListener('keypress', (e) => {
   if (e.key === 'Enter') sendMessage();
@@ -152,7 +159,8 @@ chatInput.addEventListener('keypress', (e) => {
   }
 });
 
-// FAQ toggle behavior: expand/collapse answers
+// FAQ toggle behavior: expand/collapse answers {#8aa,32}
+
 document.addEventListener('DOMContentLoaded', () => {
     const qBtns = document.querySelectorAll('.faq-question');
     qBtns.forEach(btn => {

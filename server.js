@@ -10,6 +10,7 @@ app.use(cors());
 app.use(express.json())
 app.use(express.text())
 app.use(express.urlencoded({extended:true}))
+// Rate llimiter code block {#f08,5}
 const limiter=rateLimiter({
     windowMs:15*60*1000,
     max:3,
@@ -22,12 +23,14 @@ app.get("/", (req, res) => {
 })
 const port = process.env.PORT
 const server = http.createServer(app);
+// SERVER LITSENER CODE BLOCK {#a9c,3}
 server.listen(port, () => {
     console.log(`SERVER RUNNING`)
 })
 // WEB SOCKET DEMONISTRATING CODE BLOCK
 
 // Initialize Socket.io with CORS enabled for your frontend
+// SOCKET CORS CODE BLOCK {#a2c,6}
 const io = new Server(server, {
   cors: {
     origin: "*",
@@ -37,6 +40,7 @@ const io = new Server(server, {
 
 let activeUsersCount = 0;
 
+// SOCKET IO CONNECTION INITIATER CODE BLOCK {#c57,13}
 io.on('connection', (socket) => {
   activeUsersCount++;
   io.emit('user_count', activeUsersCount);
@@ -51,6 +55,7 @@ io.on('connection', (socket) => {
     });
   });
 
+  // SOCKET IO DISCONNECTION HANDLER {#efc,5}
   socket.on('disconnect', () => {
     activeUsersCount = Math.max(0, activeUsersCount - 1);
     io.emit('user_count', activeUsersCount);
