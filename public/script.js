@@ -75,12 +75,10 @@ document.addEventListener('DOMContentLoaded', () => {
         function openDoc() {
             if (!docModal) return
             docModal.style.display = 'block'
-            document.addEventListener('keydown', handleEsc)
         }
         function closeDoc() {
             if (!docModal) return
             docModal.style.display = 'none'
-            document.removeEventListener('keydown', handleEsc)
         }
         function handleEsc(e) {
             if (e.key === 'Escape') closeDoc()
