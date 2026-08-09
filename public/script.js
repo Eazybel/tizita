@@ -14,7 +14,7 @@ const responseContent=document.getElementById("responseContent")
 const welcomeMessage=document.getElementById("welcomeMessage")
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-// authentication / fetching automationdsta/ setting local storage code block {#0e7,39}
+// authentication / fetching automationdsta/ setting local storage code block {#0e7,44}
 onAuthStateChanged(auth, (user) => {
   if (!user) {
       window.location.href="./signup.html"
@@ -56,7 +56,9 @@ console.log(uid)
 }
 // WEB SOCKET APIL DEMONISTRATION
 
-const SOCKET_SERVER_URL = "http://127.0.0.1:5000";
+const SOCKET_SERVER_URL = window.location.hostname === "localhost"
+  ? "http://127.0.0.1:5000"
+  : "https://tizita-rltw.onrender.com";
 const socket = io(SOCKET_SERVER_URL);
 
 // DOM Elements
