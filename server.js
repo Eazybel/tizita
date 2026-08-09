@@ -11,7 +11,7 @@ const limiter=rateLimiter({
     max:3,
     message:"Too many requests"
 })
-app.use(limiter)
+// app.use(limiter)
 app.use(express.static(path.join(__dirname, "public")))
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname,"./public/index.html"))

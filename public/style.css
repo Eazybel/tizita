@@ -280,3 +280,68 @@ button:hover {
   white-space: pre-wrap;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', monospace;
 }
+/* Active Chat Modal Adjustments */
+.chat-modal-content {
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-display {
+  height: 220px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 12px 0;
+  overflow-y: auto;
+  background: #f9fafb;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.chat-msg {
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  background: #e0e7ff;
+  color: #1e1b4b;
+  align-self: flex-start;
+  max-width: 80%;
+}
+
+.chat-msg.user {
+  background: #2563eb;
+  color: #ffffff;
+  align-self: flex-end;
+}
+
+.chat-msg.system {
+  background: transparent;
+  color: #6b7280;
+  font-size: 12px;
+  align-self: center;
+}
+
+.chat-input-group {
+  display: flex;
+  gap: 8px;
+}
+
+.chat-input-group input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.chat-input-group button {
+  padding: 10px 16px;
+  background-color: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
