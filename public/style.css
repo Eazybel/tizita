@@ -28,7 +28,6 @@ body {
 
 .container {
   width: 100%;
-  display:none;
   max-width: 720px;
   background: var(--card-bg);
   border-radius: 4px; /* Sharper corners for a traditional look */
