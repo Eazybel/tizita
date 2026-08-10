@@ -12,7 +12,6 @@ const userInput=document.getElementById("userInput")
 const submitBtn=document.getElementById("submitBtn")
 const responseContent=document.getElementById("responseContent")
 const welcomeMessage=document.getElementById("welcomeMessage")
-const 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 // authentication / fetching automationdsta/ setting local storage code block {#0e7,47}
