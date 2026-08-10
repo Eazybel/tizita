@@ -14,11 +14,11 @@ app.use(express.text())
 app.use(express.urlencoded({extended:true}))
 // Rate llimiter code block {#f08,5}
 const limiter=rateLimiter({
-    windowMs:10*60*1000,
+    windowMs:15*60*1000,
     max:10,
     message:"Too many requests"
 })
-// app.use(limiter)
+app.use(limiter)
 app.use(express.static(path.join(__dirname, "public")))
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname,"./public/index.html"))
