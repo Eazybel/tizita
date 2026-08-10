@@ -4,6 +4,8 @@ const rateLimiter=require("express-rate-limit")
 const http = require('http');
 const { Server } = require('socket.io');
 const cors = require('cors');
+
+
 require("dotenv").config()
 const app=express()
 app.use(cors());
@@ -12,8 +14,8 @@ app.use(express.text())
 app.use(express.urlencoded({extended:true}))
 // Rate llimiter code block {#f08,5}
 const limiter=rateLimiter({
-    windowMs:15*60*1000,
-    max:3,
+    windowMs:10*60*1000,
+    max:10,
     message:"Too many requests"
 })
 // app.use(limiter)
